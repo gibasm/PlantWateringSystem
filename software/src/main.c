@@ -10,6 +10,7 @@
 
 #include "pws.h"
 
+// to be adjusted/calibrated
 const uint16_t THRESHOLD_VALUE = 0x0240;
 
 ISR(ADC_vect) {
