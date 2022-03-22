@@ -1,2 +1,5 @@
 *.hex
 *.obj
+*.out
+.vscode
+mcu_datasheet.pdf
