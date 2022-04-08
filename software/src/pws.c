@@ -6,22 +6,6 @@
 #include <avr/interrupt.h>
 #include <avr/power.h>
 
-void turn_on_status_led() {
-    CONTROL_PORT |= (1 << STATUS_LED_PIN);
-}
-
-void turn_off_status_led() {
-    CONTROL_PORT &= ~(1 << STATUS_LED_PIN);
-}
-
-void close_valve() {
-    CONTROL_PORT &= ~(1 << VALVE_CONTROL_PIN);
-}
-
-void open_valve() {
-    CONTROL_PORT |= (1 << VALVE_CONTROL_PIN);
-}
-
 void init_all() {
     init_ports();
     init_adc_and_timers();
