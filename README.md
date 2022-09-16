@@ -7,7 +7,7 @@ An automatic system for watering houseplants.
 ## Materials:
 
 - hydraulics: water bottle, plastic hose (diameter: 6mm, length: about 2 meters), electro-mechanical valve
-- YL-69/38 soil moisture sensor (with analog output)
+- YL-69/38 soil moisture sensor
 - Atmel ATmega88PA microcontroller with 12MHz quartz resoantor (28 PDIP package) and USBASP v2.0 programmer
 - breadboard (for prototyping and programming the uC)
 - bench power supply (for prototyping)

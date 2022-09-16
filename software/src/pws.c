@@ -7,27 +7,25 @@
 #include <avr/power.h>
 
 void init_all() {
-    init_ports();
-    init_adc_and_timers();
+    init_clk();
+    init_gpio();
+    init_pci();
+
     // enable interrupts
     sei();
 }
 
-void init_adc_and_timers() {
-    // disable power saving
-    power_adc_enable();
-    // choose VREF as reference voltage
-    ADMUX |= (1 << REFS0);
-    // enable: 1. ADC auto trigger 2. ADC itself 3. ADC interrupts 4. Choose a clock prescaler
-    ADCSRA |= (1 << ADATE) | (1 << ADEN) | (1 << ADIE) | (1 << ADPS2);
-    // choose timer0 as trigger source
-    ADCSRB |= (1 << ADTS2);
-
-    // confiugre timer0
-    TCCR0B |= (1 << CS00);
-    TIMSK0 |= (1 << TOIE0);
+void init_clk() {
+    /* CLK/64 prescaler */
+    CLKPR |= (1 << CLKPCE) | (1 << CLKPS2) | (1 << CLKPS1);
 }
 
-void init_ports() {
+void init_gpio() {
     DDRB |= (1 << STATUS_LED_PIN) | (1 << VALVE_CONTROL_PIN);
+}
+
+void init_pci() {
+    /* configure PC5 pin for PCINT1 irq */
+    PCMSK1 |= (1 << 5);
+    PCICR |= (1 << PCIE1);
 }
